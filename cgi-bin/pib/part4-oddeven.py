@@ -12,7 +12,7 @@ import matplotlib.pylab as plt # matplotlib library for plotting and visualizati
 import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
 
 form = cgi.FieldStorage()
-if "L" not in form or "Vo" not in form or "V1" not in form or "d" not in form:
+if "a" not in form or "Vo" not in form or "V1" not in form or "d" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
