@@ -45,13 +45,13 @@ else:
 	ax.set_ylabel(r'$E_n$ (eV)')
 	for n in range(1,nmax1+1):
 		for m in range(1, mmax2+1):
-			str1="$n,m = "+str(n)+r","+str(m)+r"$"
+			str1="$"+str(n)+r","+str(m)+r"$"
 			str2=" $E = %.3f$ eV"%(En2D(n,m,L1,L2))
-			ax.text(n*2-2, En2D(n,m,L1,L2)+ 0.005*val, str1, fontsize=16, color="blue")
-			ax.hlines(En2D(n,m,L1,L2), n*2-2, n*2-0.5, linewidth=3.8, color="red")
+			ax.text(n*2-1.8, En2D(n,m,L1,L2)+ 0.005*val, str1, fontsize=16, color="blue")
+			ax.hlines(En2D(n,m,L1,L2), n*2-2, n*2-1, linewidth=3.8, color="red")
 			ax.hlines(En2D(n,m,L1,L2), 0.0, nmax1*2+1, linewidth=1., linestyle='--', color="black")
 			ax.text(nmax1*2+1, En2D(n,m,L1,L2)+ 0.005*val, str2, fontsize=16, color="blue")
-	plt.title("Energy Levels \n ", fontsize=30)
+	plt.title("Energy Levels for \n ", fontsize=30)
 	str1=r"$L_x = "+str(L1)+r"$ A, $n_{max} = "+str(nmax1)+r"$     $L_y = "+str(L2)+r"$ A,  $m_{max}="+str(mmax2)+r"$"
 	ax.text(1.5,val, str1, fontsize=25, color="black")
 
