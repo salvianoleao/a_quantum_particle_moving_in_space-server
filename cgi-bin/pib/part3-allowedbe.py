@@ -12,7 +12,7 @@ import matplotlib.pylab as plt # matplotlib library for plotting and visualizati
 import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
 
 form = cgi.FieldStorage()
-if "L" not in form or "Vo" not in form:
+if False:#"L" not in form or "Vo" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
@@ -22,8 +22,8 @@ else:
 	print()                             # blank line, end of headers
 
 	# Reading the input variables from the user
-	Vo = float(form["Vo"].value)
-	L =  float(form["L"].value)
+	Vo = 5#float(form["Vo"].value)
+	L =  5#float(form["L"].value)
 
 	val = np.sqrt(2.0*9.10938356e-31*1.60217662e-19)*1e-10/(2.0*1.05457180013e-34) # equal to sqrt(2m*1eV)*1A/(2*hbar)
 
