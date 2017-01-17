@@ -18542,7 +18542,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L2" value="8">
     L = $("#p3L2")[0].value
     src = "http://104.160.39.13/cgi-bin/pib/part3-allowedbe.py?Vo=" + Vo + "&L=" + L
     $.get(src,function(data){
-        alert("data")
+        alert(data)
     })
     $("#text32")[0].src = src
 }</script>
