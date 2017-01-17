@@ -31,6 +31,10 @@ else:
 	L = float(form["L"].value)
 	x = np.linspace(0, L, 900)
 
+	Emax = En(nmax,L)
+	amp = (En(2,L)-En(1,L)) *0.9
+	Etop = (Emax+amp)*1.1
+
 	# Generating the probability density graph
 	fig, ax = plt.subplots(figsize=(12,9))
 	ax.spines['right'].set_color('none')
@@ -38,19 +42,17 @@ else:
 	ax.spines['left'].set_color('none')
 	ax.axes.get_yaxis().set_visible(False)
 	ax.spines['top'].set_color('none')
-	X = np.linspace(0.0, L, 900,endpoint=True)
-	Emax = En(nmax,L)
-	amp = (En(2,L)-En(1,L))*np.sqrt(L/2.0)/1.5
-	ax.axis([-0.5*L,1.5*L,0.0,1.1*Emax])
+	X3 = np.linspace(0.0, L, 900,endpoint=True)
+	ax.axis([-0.5*L,1.5*L,0.0,Etop])
 	ax.set_xlabel(r'$X$ (Angstroms)')
 	for n in range(1,nmax+1):
 		ax.hlines(En(n,L), 0.0, L, linewidth=1.8, linestyle='--', color="black")
 		str1="$n = "+str(n)+r"$, $E_{"+str(n)+r"} = %.3f$ eV"%(En(n,L))
 		ax.text(1.03*L, En(n,L), str1, fontsize=16, color="black")
-		ax.plot(X,En(n,L)+(amp*psi(x,n,L))**2, color="red", label="", linewidth=2.8)
+		ax.plot(X3,En(n,L)+ amp*(np.sqrt(L/2.0)*psi(X3,n,L))**2, color="red", label="", linewidth=2.8)
 	ax.margins(0.00)
-	ax.vlines(0.0, 0.0, 1.1*Emax, linewidth=4.8, color="blue")
-	ax.vlines(L, 0.0, 1.1*Emax, linewidth=4.8, color="blue")
+	ax.vlines(0.0, 0.0, Etop, linewidth=4.8, color="blue")
+	ax.vlines(L, 0.0, Etop, linewidth=4.8, color="blue")
 	ax.hlines(0.0, 0.0, L, linewidth=4.8, color="blue")
 	plt.title('Probability Density', fontsize=30)
 	plt.legend(bbox_to_anchor=(0.8, 1), loc=2, borderaxespad=0.)
