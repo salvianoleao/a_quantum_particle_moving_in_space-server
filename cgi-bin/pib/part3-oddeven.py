@@ -51,12 +51,12 @@ else:
 	axes[1].plot(E, np.sqrt(Vo-E), label=r"$\sqrt{V_o-E}$", color="blue", linewidth=1.8)
 	axes[1].plot(E, -np.sqrt(E)/np.tan(L*np.sqrt(E)*val), label=r"$-\frac{\sqrt{E}}{\tan(\frac{L\sqrt{2mE}}{2\hbar})}$", color="red", linewidth=1.8)
 	# Chosing the positions of the legends
-	axes[0].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
-	axes[1].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
+	lgd1 = axes[0].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
+	lgd2 = axes[1].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
 
 	# Show the plots on the screen once the code reaches this point
 	buf = io.BytesIO()
-	plt.savefig(buf, format='png', bbox_extra_artists=(lgd,), bbox_inches='tight')
+	plt.savefig(buf, format='png', bbox_extra_artists=(lgd1,lgd2), bbox_inches='tight')
 	buf.seek(0)  # rewind the data
 	sys.stdout.flush()
 	sys.stdout.buffer.write(buf.getvalue())
