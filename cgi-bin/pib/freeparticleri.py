@@ -12,7 +12,7 @@ import matplotlib.pylab as plt # matplotlib library for plotting and visualizati
 import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
 
 form = cgi.FieldStorage()
-if "k" not in form or "xmax" not in form or "kd" not in form:
+if "k" not in form or "xmax" not in form or "dk" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
@@ -27,6 +27,7 @@ else:
 
 	k = float(form["k"].value)
 	xmax = float(form["xmax"].value)
+	dk = float(form["dk"].value)
 
 	# Generating the wavefunction graph
 	lim1 = 2.0*dk
