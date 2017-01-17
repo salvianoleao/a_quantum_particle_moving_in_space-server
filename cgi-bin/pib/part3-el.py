@@ -26,7 +26,15 @@ else:
 	L =  float(form["L"].value)
 
 	val = np.sqrt(2.0*9.10938356e-31*1.60217662e-19)*1e-10/(2.0*1.05457180013e-34) # equal to sqrt(2m*1eV)*1A/(2*hbar)
-
+	
+	# We want to find the values of E in which f_even and f_odd are zero
+	f_even = lambda E : np.sqrt(Vo-E)-np.sqrt(E)*np.tan(L*np.sqrt(E)*val)
+	f_odd = lambda E : np.sqrt(Vo-E)+np.sqrt(E)/np.tan(L*np.sqrt(E)*val)
+	E_old = 0.0
+	f_even_old = f_even(0.0)
+	f_odd_old = f_odd(0.0)
+	n = 1
+	E_vals = np.zeros(999)
 	# Here we loop from E = 0 to E = Vo seeking roots
 	for E in np.linspace(0.0, Vo, 20000):
 	    f_even_now = f_even(E)
