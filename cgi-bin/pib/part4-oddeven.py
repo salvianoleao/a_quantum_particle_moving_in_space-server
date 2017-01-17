@@ -23,7 +23,7 @@ else:
 
 	# Reading the input variables from the user
 	Vo = abs(float(form["Vo"].value))
-	a =  abs(float(form["L"].value))
+	a =  abs(float(form["a"].value))
 	V1 = abs(float(form["V1"].value))
 	d =  abs(float(form["d"].value))
 
