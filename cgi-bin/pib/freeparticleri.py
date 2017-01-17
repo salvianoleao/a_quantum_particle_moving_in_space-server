@@ -33,7 +33,7 @@ else:
 	lim1 = 2.0*dk
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
 	x = np.linspace(-xmax, xmax, 900)
-	fig, axes = plt.subplots(1, 2, figsize=(13,5))
+	fig, axes = plt.subplots(1, 2, figsize=(13,6))
 	str1=r"$k_o  \pm \Delta k$ = "+str(k)+r" $\pm$ "+str(dk)+r" A$^{-1}$"
 	# axes[0] is the graph at the left
 	axes[0].axis([-xmax,xmax,-1.1*lim1,1.1*lim1])
