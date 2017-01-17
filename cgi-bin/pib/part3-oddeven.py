@@ -29,7 +29,7 @@ else:
 
 	# Generating the graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
-	fig, axes = plt.subplots(1, 2, figsize=(13,4))
+	fig, axes = plt.subplots(1, 2, figsize=(13,8))
 	axes[0].axis([0.0,Vo,0.0,np.sqrt(Vo)*1.8])
 	axes[0].set_xlabel(r'$E$ (eV)')
 	axes[0].set_ylabel(r'(eV$^{-1}$)')
