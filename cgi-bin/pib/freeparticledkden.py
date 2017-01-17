@@ -36,11 +36,10 @@ else:
 	str1=r"$k_o  \pm \Delta k$ = "+str(k)+r" $\pm$ "+str(dk)+r" A$^{-1}$"
 
 	# Generating the probability density graph
-	fig, ax = plt.subplots(figsize=(7,7))
+	fig, ax = plt.subplots()
 	ax.axis([-xmax,xmax,0.0,lim1*lim1*1.1]) # Defining the limits to be plot in the graph
 	ax.plot(x, (psi(x,k,dk).real)**2+(psi(x,k,dk).imag)**2,label="Probability Density", color="green") # Plotting the probability density
 	# Now we define labels, legend, etc
-	ax.legend(loc=2);
 	ax.set_xlabel(r'$x$ (Angstroms)')
 	ax.set_ylabel(r'$\left|\Psi_{\Delta k}(x)\right|^2$')
 	plt.title('Probability Density \n for '+str1)
