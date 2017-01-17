@@ -18884,13 +18884,19 @@ $$ \large{ \frac{\int^{\frac{-L}{2}}_{-\infty} |\psi(x)|^2\ dx +\int^{+\infty}_{
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-The tunneling probabilities are:
-  State #  1 tunneling probability =  0.59%
-  State #  2 tunneling probability =  2.50%
-  State #  3 tunneling probability =  6.29%
-  State #  4 tunneling probability = 14.02%
-  State #  5 tunneling probability = 48.29%
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p3Vo6" value="8">
+Enter the value for L (in Angstroms) = <input type="text" id="p3L6" value="8">
+<script language="javascript">function p3show6() {
+    Vo = $("#p3Vo6")[0].value
+    L = $("#p3L6")[0].value
+    src = "http://104.160.39.13/cgi-bin/pib/part3-tunnelingp.py?Vo=" + Vo + "&L=" + L
+    $.get(src,function(data){
+        $("#text36")[0].innerHTML = data
+    })
+}</script>
+<button type="button" onclick="p3show6();">Show</button>
+</pre>
+<pre id="text36">
 </pre>
 </div>
 </div>
