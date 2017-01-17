@@ -28,9 +28,9 @@ else:
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
 
 	nmax = int(form["n"].value)
-	L = int(form["L"].value)
+	L = float(form["L"].value)
 	x = np.linspace(0, L, 900)
-	
+
 	# Generating the wavefunction graph
 	fig, ax = plt.subplots(figsize=(12,9))
 	ax.spines['right'].set_color('none')

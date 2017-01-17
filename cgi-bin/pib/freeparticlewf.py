@@ -25,8 +25,8 @@ else:
 	def psi(x,k): return (1.0/np.sqrt(2.0*np.pi))*(np.cos(k*x)+np.sin(k*x)*1j)
 	def psiC(x,k): return (1.0/np.sqrt(2.0*np.pi))*(np.cos(k*x)-np.sin(k*x)*1j)
 
-	k = int(form["k"].value)
-	xmax = int(form["xmax"].value)
+	k = float(form["k"].value)
+	xmax = float(form["xmax"].value)
 
 	# Generating the wavefunction graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})

@@ -25,7 +25,7 @@ else:
 	def psi(x,n,L): return np.sqrt(2.0/L)*np.sin(float(n)*np.pi*x/L)
 
 	n = int(form["n"].value)
-	L = int(form["L"].value)
+	L = float(form["L"].value)
 
 	# Generating the probability density graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})

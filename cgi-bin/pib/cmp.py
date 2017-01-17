@@ -21,11 +21,11 @@ else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
 
-	L1 = int(form["L1"].value)
-	L2 = int(form["L2"].value)
+	L1 = float(form["L1"].value)
+	L2 = float(form["L2"].value)
 	n = int(form["n"].value)
 	L = 100
-	
+
 	# Defining the wavefunction
 	def psi(x,n,L): return np.sqrt(2.0/L)*np.sin(float(n)*np.pi*x/L)
 

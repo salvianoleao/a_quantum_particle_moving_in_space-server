@@ -21,11 +21,11 @@ else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
 
-	L1 = int(form["L1"].value)
-	L2 = int(form["L2"].value)
+	L1 = float(form["L1"].value)
+	L2 = float(form["L2"].value)
 	nmax1 = int(form["n1"].value)
 	nmax2 = int(form["n2"].value)
-	
+
 	# Defining a function to compute the energy
 	def En(n,L): return 37.60597*((float(n)/L)**2)
 

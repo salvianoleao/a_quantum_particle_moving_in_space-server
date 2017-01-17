@@ -22,15 +22,15 @@ else:
 	print()                             # blank line, end of headers
 
 	nmax1 = int(form["n"].value)
-	L1 = int(form["Lx"].value)
+	L1 = float(form["Lx"].value)
 	mmax2 = int(form["m"].value)
-	L2 = int(form["Ly"].value)
+	L2 = float(form["Ly"].value)
 
 	# Defining the wavefunction
 	def psi2D(x,y): return 2.0*np.sin(n*np.pi*x)*np.sin(m*np.pi*y)
 	# Defining the energy as a function
 	def En2D(n,m,L1,L2): return 37.60597*((float(n)/L1)**2+ (float(m)/L2)**2)
-	
+
 	# Plotting the energy levels
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
 	fig, ax = plt.subplots(figsize=(nmax1*2+2,nmax1*3))
