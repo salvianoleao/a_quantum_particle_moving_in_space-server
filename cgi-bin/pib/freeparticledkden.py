@@ -36,7 +36,7 @@ else:
 	str1=r"$k_o  \pm \Delta k$ = "+str(k)+r" $\pm$ "+str(dk)+r" A$^{-1}$"
 
 	# Generating the probability density graph
-	fig, ax = plt.subplots(figsize=(7,6))
+	fig, ax = plt.subplots(figsize=(10,7))
 	ax.axis([-xmax,xmax,0.0,lim1*lim1*1.1]) # Defining the limits to be plot in the graph
 	ax.plot(x, (psi(x,k,dk).real)**2+(psi(x,k,dk).imag)**2,label="Probability Density", color="green") # Plotting the probability density
 	# Now we define labels, legend, etc
