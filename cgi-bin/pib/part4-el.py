@@ -108,3 +108,10 @@ else:
 	ax.hlines(Vo, 7.2, 18.3, linewidth=1.8, linestyle='-', color="blue")
 	ax.hlines(0.0, 0.0, 20.0, linewidth=1.8, linestyle='-', color="black")
 	plt.title("Energy Levels", fontsize=30)
+
+	# Show the plots on the screen once the code reaches this point
+	buf = io.BytesIO()
+	plt.savefig(buf, format='png')
+	buf.seek(0)  # rewind the data
+	sys.stdout.flush()
+	sys.stdout.buffer.write(buf.getvalue())
