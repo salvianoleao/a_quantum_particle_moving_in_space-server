@@ -12008,7 +12008,91 @@ Numpy version = 1.11.3
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The next cell configures <code>matplotlib</code> to show figures embedded within the cells it was executed from, instead of opening a new window for each figure.</p>
+<p>A state of a <strong><em>Particle</em></strong> is described  by its ket $\left|\psi(x)\right>$. 
+In order to learn something about this particle, we must construct <em>Hermitian Operators</em> associated with the observables. For example, what is the <strong>momentum operator $\hat P$</strong>?</p>
+<p>The momentum operator most obey the following property:
+$$\hat P \left| \psi_k(x) \right> =p\left | \psi_k(x)\right>  \tag{1}$$ 
+where <em>p</em> is an eigenvalue and is a real number.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the $x$ representation, using the momentum operator as $\hat P =-i\hbar \frac{\partial }{\partial x}$, we can solve equation 1 by proposing a function to represent $\left| \psi_k(x) \right>$ as</p>
+<p>$\psi_k(x) = c\ e^{ikx}$, where $k$ is a real number.</p>
+<p>Let's see if it works:<br>
+$$\hat P \psi_k(x) =p \psi_k(x)$$</p>
+$$-i\hbar \frac{\partial {c\ e^{ikx}}}{\partial x} =-i\hbar\ c\ ik\ e^{ikx} $$<p></p>
+$$\hbar k\ c\ e^{ikx} = \hbar k\ \psi_k(x)$$<p>with momentum $p=\hbar k$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The normalization of $\psi_k(x)$ is not straightforward in this case.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Side-note-on-the-normalization-constant-and-Dirac's-delta-function">Side note on the normalization constant and Dirac's delta function<a class="anchor-link" href="#Side-note-on-the-normalization-constant-and-Dirac's-delta-function">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\left<\psi_{k'}(x)|\psi_k(x)\right> = \left<k'|k \right> = \int^{+\infty}_{-\infty} \psi_{k'}^*(x)\psi_k(x) dx = \int^{+\infty}_{-\infty} c^* e^{-ik'x} ce^{ikx} dx = |c|^2 \int^{+\infty}_{-\infty} e^{i(k-k')x} dx = |c|^2 2\pi\ \delta(k-k')$$<p>where we used the definition of the <strong>Dirac's delta function</strong>:
+$$\delta(x) = \frac{1}{2\pi} \int^{+\infty}_{-\infty} e^{ivx} dv$$
+which obeys the following properties:
+$$\delta(x-a)=0\ if  x \neq a$$
+$$\int^\infty_{-\infty} f(x)\ \delta(x-a) \ dx =f(a)$$</p>
+<p>The normalization constant $c$ is chosen as $c = \frac{1}{\sqrt{2\pi}}$ in such a way that:
+$$\left<\psi_{k'}(x)|\psi_k(x)\right> = \delta(k-k')$$</p>
+<p>and the function becomes:
+$$\psi_k(x) = \frac{1}{\sqrt{2\pi}} e^{ikx}$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we know the normalized eigenfunctions, we can ask some questions:</p>
+<ul>
+<li><strong>Q1:</strong> What is the momentum of a free particle?   </li>
+<li><strong>Q2:</strong> What are the units of momentum?</li>
+<li><strong>Q3:</strong> Is the momentum of a <em>Free Particle</em>  quantized?</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$k$ has units of $\frac{1}{m}$ and $\hbar$ has units of $J.s =\frac{kg.m^{2}}{s}$, therefore  $p=\hbar k$  units are  $\frac{J.s}{m} = \frac{Kg.m}{s}$</p>
+<p>To visualize the wavefunction $\psi_k(x)$ we use Euler relationship $[e^{i\theta}=\cos(\theta)+i\sin(\theta)]$ and graph separately the Real and Imaginary components of the wavefunction (even though the wavefunction is <em>complex</em>,  $\hat P $ is a Hermitian operator, thus the eigenvalues are measurable and real numbers).</p>
+<p>On the other hand, the Probability Density is a constant, since:
+$$ \psi^*_k(x) \psi_k(x) = \frac{1}{\sqrt{2 \pi}}e^{-ikx}\frac{1}{\sqrt{2 \pi}}e^{ikx} =\frac{1}{2\pi}$$</p>
 
 </div>
 </div>
