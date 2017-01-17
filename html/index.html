@@ -21840,16 +21840,26 @@ Here are some question to think about:</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The allowed bounded energies are:
-  State #  1 (Even):    0.6491 eV,   1.03994e-19 J
-  State #  2  (Odd):    0.7226 eV,   1.15771e-19 J
-  State #  3 (Even):    2.5464 eV,   4.07975e-19 J
-  State #  4  (Odd):    2.8374 eV,     4.546e-19 J
-  State #  5 (Even):    5.4286 eV,   8.69761e-19 J
-  State #  6  (Odd):    5.9101 eV,    9.4691e-19 J
-
-THERE ARE   6 POSSIBLE BOUNDED ENERGIES
-</pre>
+Enter the value for Vo (in eV) = <input type="text" id="p4Vo2" value="6">
+Enter the value for a (box size, in Angstroms) = <input type="text" id="p4a2" value="6">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V12" value="12">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d2" value="1">
+<script language="javascript">function btnp42() {
+    Vo = $("#p4Vo2")[0].value
+    a = $("#p4a2")[0].value
+    V1 = $("#p4V12")[0].value
+    d = $("#p4d2")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        src = "http://104.160.39.13/cgi-bin/pib/part4-allowedbe.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        $.get(src,function(data){
+            $("#text42")[0].innerHTML = data
+        })
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp42();">Show</button>
+<pre id="text42"></pre>
 </div>
 </div>
 
