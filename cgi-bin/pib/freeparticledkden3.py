@@ -34,7 +34,7 @@ else:
 	lim1 = psi_contourG(0,dk)
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
 	x = np.linspace(-xmax, xmax, 900)
-	fig, axes = plt.subplots(1, 2, figsize=(13,4))
+	fig, axes = plt.subplots(1, 2, figsize=(13,7))
 	str1=r"$k_o \pm \Delta k$ = "+str(k)+r" $\pm$ "+str(dk)+r" A$^{-1}$"
 	axes[0].plot(x, psi_contour(x,dk), label="", linestyle ="-",color="green", linewidth=1.8)
 	axes[0].hlines(0.0, -xmax, xmax, linewidth=1.8, linestyle='--', color="black")
