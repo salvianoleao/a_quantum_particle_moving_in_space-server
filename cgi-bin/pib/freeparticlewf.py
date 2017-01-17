@@ -43,7 +43,6 @@ else:
 	ax.set_ylabel(r'$\psi_k(x)$')
 	str1=r"$k$ = "+str(k)+r" A$^{-1}$"
 	plt.title('Wavefunction for '+str1)
-	plt.legend(bbox_to_anchor=(1.1, 1), loc=2, borderaxespad=0.0)
 
 	# Show the plots on the screen once the code reaches this point
 	buf = io.BytesIO()
