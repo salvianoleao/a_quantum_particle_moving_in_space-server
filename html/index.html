@@ -12008,10 +12008,10 @@ Numpy version = 1.11.3
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A state of a <strong><em>Particle</em></strong> is described  by its ket $\left|\psi(x)\right>$. 
+<p>A state of a <strong><em>Particle</em></strong> is described  by its ket $\left|\psi(x)\right>$.
 In order to learn something about this particle, we must construct <em>Hermitian Operators</em> associated with the observables. For example, what is the <strong>momentum operator $\hat P$</strong>?</p>
 <p>The momentum operator most obey the following property:
-$$\hat P \left| \psi_k(x) \right> =p\left | \psi_k(x)\right>  \tag{1}$$ 
+$$\hat P \left| \psi_k(x) \right> =p\left | \psi_k(x)\right>  \tag{1}$$
 where <em>p</em> is an eigenvalue and is a real number.</p>
 
 </div>
@@ -18355,10 +18355,10 @@ cACBOwAAAAAAAAAADiBwBwAAAAAAAADAAf8fXdGOHIUvbYgAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For 
+<p>For
 <script type="math/tex" id="MathJax-Element-120">E<V_o</script>
 , it is really interesting to look at what happens outside the walls.</p>
-<p>When 
+<p>When
 <script type="math/tex" id="MathJax-Element-120">E<V_o</script>
 , the Schrödinger equation becomes   $$\large{\frac{\partial^2\psi(x)}{\partial x^2}} = \alpha_o^2\cdot \psi(x)$$ since $\alpha_o^2 = \frac{2m(V_o-E)}{\hbar^2} >0$. The solutions to this equation have the general form of $$\large{\psi(x) =e^{\pm\alpha_o x}}$$.</p>
 <p>Note that the exponential function doesn't require an imaginary component $\Rightarrow$ it is not oscillatory
@@ -21733,10 +21733,21 @@ $$\alpha_o = \frac{\sqrt{2m(V_o-E)}}{\hbar} \hspace 3cm \alpha_1 = \frac{\sqrt{2
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Enter the value for Vo (in eV) = 6
-Enter the value for a (box size, in Angstroms) = 6
-Enter the value for V1 (V1 &gt;= Vo, in eV) = 12
-Enter the value for d (barrier size, in Angstroms) = 1
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p4Vo1" value="8">
+Enter the value for a (box size, in Angstroms) = <input type="text" id="p4a1" value="8">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V11" value="8">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d1" value="8">
+<script language="javascript">function btnp41() {
+    Vo = $("#p4Vo1")[0].value
+    a = $("#p4a1")[0].value
+    V1 = $("#p4V11")[0].value
+    d = $("#p4d1")[0].value
+    src1 = "http://104.160.39.13/cgi-bin/pib/freeparticlewf.py?k=" + k + "&xmax=" + xmax
+    src2 = "http://104.160.39.13/cgi-bin/pib/freeparticleden.py?k=" + k + "&xmax=" + xmax
+    $("#mypngfpwf")[0].src = src1
+    $("#mypngfpden")[0].src = src2
+}</script>
+<button type="button" onclick="btnp41();">Show</button>
 </pre>
 </div>
 </div>
