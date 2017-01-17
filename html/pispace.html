@@ -18537,13 +18537,16 @@ Here are some question to think about:</p>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Enter the value for Vo (in eV) = <input type="text" id="p3Vo2" value="8">
 Enter the value for L (in Angstroms) = <input type="text" id="p3L2" value="8">
-<script language="javascript">function p3show1() {
+<script language="javascript">function p3show2() {
     Vo = $("#p3Vo2")[0].value
     L = $("#p3L2")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-oddeven.py?Vo=" + Vo + "&L=" + L
+    src = "http://104.160.39.13/cgi-bin/pib/part3-allowedbe.py?Vo=" + Vo + "&L=" + L
+    $.get(src,function(data){
+        alert("data")
+    })
     $("#text32")[0].src = src
 }</script>
-<button type="button" onclick="p3show1();">Show</button>
+<button type="button" onclick="p3show2();">Show</button>
 </pre>
 <pre id="text32">The allowed bounded energies are:
   State #  1 (Even):    0.3482 eV,   5.57906e-20 J
