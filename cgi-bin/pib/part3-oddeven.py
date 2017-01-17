@@ -29,7 +29,7 @@ else:
 
 	# Generating the graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
-	fig, axes = plt.subplots(1, 2, figsize=(13,20))
+	fig, axes = plt.subplots(1, 2, figsize=(13,4))
 	axes[0].axis([0.0,Vo,0.0,np.sqrt(Vo)*1.8])
 	axes[0].set_xlabel(r'$E$ (eV)')
 	axes[0].set_ylabel(r'(eV$^{-1}$)')
@@ -51,8 +51,8 @@ else:
 	axes[1].plot(E, np.sqrt(Vo-E), label=r"$\sqrt{V_o-E}$", color="blue", linewidth=1.8)
 	axes[1].plot(E, -np.sqrt(E)/np.tan(L*np.sqrt(E)*val), label=r"$-\frac{\sqrt{E}}{\tan(\frac{L\sqrt{2mE}}{2\hbar})}$", color="red", linewidth=1.8)
 	# Chosing the positions of the legends
-	axes[0].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
-	axes[1].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
+	axes[0].legend(loc=2)
+	axes[1].legend(loc=2)
 
 	# Show the plots on the screen once the code reaches this point
 	buf = io.BytesIO()
