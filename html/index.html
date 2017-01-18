@@ -22424,14 +22424,27 @@ $$ \frac{\int_{-\frac{d}{2}}^{\frac{d}{2}} |\psi(x)|^2\ dx}{\int_{-\infty}^{+\in
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-The tunneling probabilities and probabilities of being inside the barrier are:
-  State #  1 (Even): tunneling probability =  1.19%, barrier probability =  0.91%
-  State #  2  (Odd): tunneling probability =  1.41%, barrier probability =  0.13%
-  State #  3 (Even): tunneling probability =  5.63%, barrier probability =  3.40%
-  State #  4  (Odd): tunneling probability =  6.92%, barrier probability =  0.48%
-  State #  5 (Even): tunneling probability = 24.56%, barrier probability =  5.80%
-  State #  6  (Odd): tunneling probability = 49.63%, barrier probability =  0.57%
+Enter the value for Vo (in eV) = <input type="text" id="p4Vo6" value="6">
+Enter the value for a (box size, in Angstroms) = <input type="text" id="p4a6" value="6">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V16" value="12">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d6" value="1">
+<script language="javascript">function btnp46() {
+    Vo = $("#p4Vo6")[0].value
+    a = $("#p4a6")[0].value
+    V1 = $("#p4V16")[0].value
+    d = $("#p4d6")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        src = "http://104.160.39.13/cgi-bin/pib/part4-tunnelingp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        $.get(src,function(data){
+            $("#text46")[0].innerHTML = data
+        })
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp46();">Show</button>
 </pre>
+<pre id="text46"></pre>
 </div>
 </div>
 
