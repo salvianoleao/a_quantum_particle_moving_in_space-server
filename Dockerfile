@@ -4,5 +4,5 @@ RUN a2enmod cgid
 COPY ./html/ /var/www/html/
 COPY ./cgi-bin/ /usr/lib/cgi-bin/
 EXPOSE 80
-ENV NAME "A QUANTUM PARTICLE MOVING IN SPACE"
+ENV NAME "A Quantum Particle Moving in Space"
 CMD service apache2 start; sleep infinity
