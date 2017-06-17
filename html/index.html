@@ -12158,8 +12158,8 @@ Enter the maximum value for x (in Angstroms) = <input type="text" id="myfpwfdenx
 <script language="javascript">function setfreeparticlewfden() {
     k = $("#myfpwfdenk")[0].value
     xmax = $("#myfpwfdenx")[0].value
-    src1 = "http://104.160.39.13/cgi-bin/pib/freeparticlewf.py?k=" + k + "&xmax=" + xmax
-    src2 = "http://104.160.39.13/cgi-bin/pib/freeparticleden.py?k=" + k + "&xmax=" + xmax
+    src1 = "cgi-bin/freeparticlewf.py?k=" + k + "&xmax=" + xmax
+    src2 = "cgi-bin/freeparticleden.py?k=" + k + "&xmax=" + xmax
     $("#mypngfpwf")[0].src = src1
     $("#mypngfpden")[0].src = src2
 }</script>
@@ -12318,8 +12318,8 @@ Enter the maximum value for x (in Angstroms) = <input type="text" id="myinputfpx
     k = $("#myinputfpko")[0].value
     xmax = $("#myinputfpx2")[0].value
     dk = $("#myinputfpdk")[0].value
-    src1 = "http://104.160.39.13/cgi-bin/pib/freeparticleri.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
-    src2 = "http://104.160.39.13/cgi-bin/pib/freeparticledkden.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
+    src1 = "cgi-bin/freeparticleri.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
+    src2 = "cgi-bin/freeparticledkden.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
     $("#mypngfpri")[0].src = src1
     $("#mypngfpdkden")[0].src = src2
 }</script>
@@ -12466,8 +12466,8 @@ Enter the maximum value for x (in Angstroms) = <input type="text" id="myinputfpx
     k = $("#myinputfpko2")[0].value
     xmax = $("#myinputfpx22")[0].value
     dk = $("#myinputfpdk2")[0].value
-    src1 = "http://104.160.39.13/cgi-bin/pib/freeparticleri2.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
-    src2 = "http://104.160.39.13/cgi-bin/pib/freeparticledkden2.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
+    src1 = "cgi-bin/freeparticleri2.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
+    src2 = "cgi-bin/freeparticledkden2.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
     $("#mypngfpri2")[0].src = src1
     $("#mypngfpdkden2")[0].src = src2
 }</script>
@@ -12580,7 +12580,7 @@ Enter the maximum value for x (in Angstroms) = <input type="text" id="myinputfpx
     k = $("#myinputfpko3")[0].value
     xmax = $("#myinputfpx23")[0].value
     dk = $("#myinputfpdk3")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/freeparticledkden3.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
+    src = "cgi-bin/freeparticledkden3.py?k=" + k + "&xmax=" + xmax + "&dk=" + dk
     $("#mypngfpri3")[0].src = src
 }</script>
 <button type="button" onclick="setfreeparticledx3();">Show</button>
@@ -14947,8 +14947,8 @@ It is important to emphasize that the quantization (<em>n</em> being only positi
 <pre>Enter the value for the quantum number n (must be an integer) = <input type="text" id="myinputn" value="4">
 Enter the size of the box in Angstroms = <input type="text" id="myinputL" value="6">
 <script language="javascript">function setwfden() {
-    src1 = "http://104.160.39.13/cgi-bin/pib/wf.py?n=" + $("#myinputn")[0].value + "&L=" + $("#myinputL")[0].value
-    src2 = "http://104.160.39.13/cgi-bin/pib/pden.py?n=" + $("#myinputn")[0].value + "&L=" + $("#myinputL")[0].value
+    src1 = "cgi-bin/wf.py?n=" + $("#myinputn")[0].value + "&L=" + $("#myinputL")[0].value
+    src2 = "cgi-bin/pden.py?n=" + $("#myinputn")[0].value + "&L=" + $("#myinputL")[0].value
     $("#mypngwf")[0].src = src1
     $("#mypngpden")[0].src = src2
 }</script>
@@ -15063,7 +15063,7 @@ Enter the value of L for the second box (in Angstroms, not larger then 20 A) = <
     L1str = $("#myinputL1")[0].value
     L2str = $("#myinputL2")[0].value
     n = $("#myinputn2")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/cmp.py?L1=" + L1str + "&L2=" + L2str + "&n=" + n
+    src = "cgi-bin/cmp.py?L1=" + L1str + "&L2=" + L2str + "&n=" + n
     $("#mypngcmp")[0].src = src
 }</script>
 <button type="button" onclick="setcmpden();">Show</button>
@@ -15164,7 +15164,7 @@ Enter the number of levels you want to plot for the second box = <input type="te
     n1 = $("#myinputeln1")[0].value
     L2 = $("#myinputelL2")[0].value
     n2 = $("#myinputeln2")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/el.py?L1=" + L1 + "&L2=" + L2 + "&n1=" + n1 + "&n2=" + n2
+    src = "cgi-bin/el.py?L1=" + L1 + "&L2=" + L2 + "&n1=" + n1 + "&n2=" + n2
     $("#mypngelcmp")[0].src = src
 }</script>
 <button type="button" onclick="setelcmp();">Show</button>
@@ -15276,8 +15276,8 @@ Enter the maximum value of n you want to plot = <input type="text" id="myinputcm
 <script language="javascript">function setcmpwfpd() {
     L = $("#myinputcmpwfpdL")[0].value
     n = $("#myinputcmpwfpdn")[0].value
-    src1 = "http://104.160.39.13/cgi-bin/pib/cmpwf.py?L=" + L + "&n=" + n
-    src2 = "http://104.160.39.13/cgi-bin/pib/cmppd.py?L=" + L + "&n=" + n
+    src1 = "cgi-bin/cmpwf.py?L=" + L + "&n=" + n
+    src2 = "cgi-bin/cmppd.py?L=" + L + "&n=" + n
     $("#mypngcmpwf")[0].src = src1
     $("#mypngcmppd")[0].src = src2
 }</script>
@@ -15386,8 +15386,8 @@ Enter the value for m = <input type="text" id="myinput2dm" value="5">
 <script language="javascript">function set2d() {
     m = $("#myinput2dm")[0].value
     n = $("#myinput2dn")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/2d.py?m=" + m + "&n=" + n
-    src2 = "http://104.160.39.13/cgi-bin/pib/2dcolor.py?m=" + m + "&n=" + n
+    src = "cgi-bin/2d.py?m=" + m + "&n=" + n
+    src2 = "cgi-bin/2dcolor.py?m=" + m + "&n=" + n
     $("#mypng2d")[0].src = src
     $("#mypng2dcolor")[0].src = src2
 }</script>
@@ -15528,7 +15528,7 @@ Enter the maximum value of m to consider = <input type="text" id="myinput2ddegm"
     n = $("#myinput2ddegn")[0].value
     Lx = $("#myinput2ddegLx")[0].value
     Ly = $("#myinput2ddegLy")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/2ddeg.py?m=" + m + "&n=" + n + "&Lx=" + Lx + "&Ly=" + Ly
+    src = "cgi-bin/2ddeg.py?m=" + m + "&n=" + n + "&Lx=" + Lx + "&Ly=" + Ly
     $("#mypng2ddeg")[0].src = src
 }</script>
 <button type="button" onclick="setdege();">Show</button>
@@ -18525,7 +18525,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L1" value="8">
 <script language="javascript">function p3show1() {
     Vo = $("#p3Vo1")[0].value
     L = $("#p3L1")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-oddeven.py?Vo=" + Vo + "&L=" + L
+    src = "cgi-bin/part3-oddeven.py?Vo=" + Vo + "&L=" + L
     $("#png31")[0].src = src
 }</script>
 <button type="button" onclick="p3show1();">Show</button>
@@ -18629,7 +18629,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L2" value="8">
 <script language="javascript">function p3show2() {
     Vo = $("#p3Vo2")[0].value
     L = $("#p3L2")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-allowedbe.py?Vo=" + Vo + "&L=" + L
+    src = "cgi-bin/part3-allowedbe.py?Vo=" + Vo + "&L=" + L
     $.get(src,function(data){
         $("#text32")[0].innerHTML = data
     })
@@ -18700,7 +18700,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L3" value="8">
 <script language="javascript">function p3show3() {
     Vo = $("#p3Vo3")[0].value
     L = $("#p3L3")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-el.py?Vo=" + Vo + "&L=" + L
+    src = "cgi-bin/part3-el.py?Vo=" + Vo + "&L=" + L
     $("#png33")[0].src = src
 }</script>
 <button type="button" onclick="p3show3();">Show</button>
@@ -18793,7 +18793,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L4" value="8">
 <script language="javascript">function p3show4() {
     Vo = $("#p3Vo4")[0].value
     L = $("#p3L4")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-bwf.py?Vo=" + Vo + "&L=" + L
+    src = "cgi-bin/part3-bwf.py?Vo=" + Vo + "&L=" + L
     $("#png34")[0].src = src
 }</script>
 <button type="button" onclick="p3show4();">Show</button>
@@ -18895,7 +18895,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L5" value="8">
 <script language="javascript">function p3show5() {
     Vo = $("#p3Vo5")[0].value
     L = $("#p3L5")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-bpd.py?Vo=" + Vo + "&L=" + L
+    src = "cgi-bin/part3-bpd.py?Vo=" + Vo + "&L=" + L
     $("#png35")[0].src = src
 }</script>
 <button type="button" onclick="p3show5();">Show</button>
@@ -18978,7 +18978,7 @@ Enter the value for L (in Angstroms) = <input type="text" id="p3L6" value="8">
 <script language="javascript">function p3show6() {
     Vo = $("#p3Vo6")[0].value
     L = $("#p3L6")[0].value
-    src = "http://104.160.39.13/cgi-bin/pib/part3-tunnelingp.py?Vo=" + Vo + "&L=" + L
+    src = "cgi-bin/part3-tunnelingp.py?Vo=" + Vo + "&L=" + L
     $.get(src,function(data){
         $("#text36")[0].innerHTML = data
     })
@@ -21743,7 +21743,7 @@ Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d1
     V1 = $("#p4V11")[0].value
     d = $("#p4d1")[0].value
     if(parseFloat(V1) >= parseFloat(Vo)) {
-        src = "http://104.160.39.13/cgi-bin/pib/part4-oddeven.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src = "cgi-bin/part4-oddeven.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
         $("#mypng41")[0].src = src
     } else {
         alert("V1 cannot be smaller than Vo.")
@@ -21851,7 +21851,7 @@ Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d2
     V1 = $("#p4V12")[0].value
     d = $("#p4d2")[0].value
     if(parseFloat(V1) >= parseFloat(Vo)) {
-        src = "http://104.160.39.13/cgi-bin/pib/part4-allowedbe.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src = "cgi-bin/part4-allowedbe.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
         $.get(src,function(data){
             $("#text42")[0].innerHTML = data
         })
@@ -21932,7 +21932,7 @@ Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d3
     V1 = $("#p4V13")[0].value
     d = $("#p4d3")[0].value
     if(parseFloat(V1) >= parseFloat(Vo)) {
-        src = "http://104.160.39.13/cgi-bin/pib/part4-el.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src = "cgi-bin/part4-el.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
         $("#mypng43")[0].src = src
     } else {
         alert("V1 cannot be smaller than Vo.")
@@ -22121,8 +22121,8 @@ Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d4
     V1 = $("#p4V14")[0].value
     d = $("#p4d4")[0].value
     if(parseFloat(V1) >= parseFloat(Vo)) {
-        src1 = "http://104.160.39.13/cgi-bin/pib/part4-oddwf.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
-        src2 = "http://104.160.39.13/cgi-bin/pib/part4-evenwf.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src1 = "cgi-bin/part4-oddwf.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src2 = "cgi-bin/part4-evenwf.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
         $("#mypng441")[0].src = src1
         $("#mypng442")[0].src = src2
     } else {
@@ -22314,8 +22314,8 @@ Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d5
     V1 = $("#p4V15")[0].value
     d = $("#p4d5")[0].value
     if(parseFloat(V1) >= parseFloat(Vo)) {
-        src1 = "http://104.160.39.13/cgi-bin/pib/part4-oddp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
-        src2 = "http://104.160.39.13/cgi-bin/pib/part4-evenp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src1 = "cgi-bin/part4-oddp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src2 = "cgi-bin/part4-evenp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
         $("#mypng451")[0].src = src1
         $("#mypng452")[0].src = src2
     } else {
@@ -22434,7 +22434,7 @@ Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d6
     V1 = $("#p4V16")[0].value
     d = $("#p4d6")[0].value
     if(parseFloat(V1) >= parseFloat(Vo)) {
-        src = "http://104.160.39.13/cgi-bin/pib/part4-tunnelingp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
+        src = "cgi-bin/part4-tunnelingp.py?Vo=" + Vo + "&a=" + a + "&V1=" + V1 + "&d=" + d
         $.get(src,function(data){
             $("#text46")[0].innerHTML = data
         })
