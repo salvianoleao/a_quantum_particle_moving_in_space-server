@@ -72,4 +72,4 @@ else:
 	        B = 1.0
 	        D = np.exp(a0*L/2.0)*np.cos(k*L/2.0)*B
 	        prob = D*D*2.0*k*np.exp(-a0*L)/(B*B*a0*(k*L+np.sin(k*L))+D*D*2.0*k*np.exp(-a0*L))
-	    print("  State #%3d tunneling probability = %5.2f%%" % (n,100*prob))
+	    print ("  State #%3d tunneling probability = %5.2f%%" % (n,100*prob))

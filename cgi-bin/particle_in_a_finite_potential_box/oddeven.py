@@ -16,7 +16,7 @@ if "L" not in form or "Vo" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
-	print("Please fill in the name and addr fields.")
+	print("Please fill in the required fields.")
 else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
@@ -29,15 +29,15 @@ else:
 
 	# Generating the graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
-	fig, axes = plt.subplots(1, 2, figsize=(13,5))
+	fig, axes = plt.subplots(1, 2, figsize=(13,4))
 	axes[0].axis([0.0,Vo,0.0,np.sqrt(Vo)*1.8])
 	axes[0].set_xlabel(r'$E$ (eV)')
 	axes[0].set_ylabel(r'(eV$^{-1}$)')
-	axes[0].set_title('Even solution')
+	axes[0].set_title('Even solutions')
 	axes[1].axis([0.0,Vo,0.0,np.sqrt(Vo)*1.8])
 	axes[1].set_xlabel(r'$E$ (eV)')
 	axes[1].set_ylabel(r'')
-	axes[1].set_title('Odd solution')
+	axes[1].set_title('Odd solutions')
 	E = np.linspace(0.0, Vo, 10000)
 	num = int(round((L*np.sqrt(Vo)*val-np.pi/2.0)/np.pi))
 	# Removing discontinuity points
