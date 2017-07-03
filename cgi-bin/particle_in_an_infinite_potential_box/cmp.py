@@ -16,7 +16,7 @@ if "L1" not in form or "L2" not in form or "n" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
-	print("Please fill in the name and addr fields.")
+	print("Please fill in the required fields.")
 else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
@@ -66,11 +66,11 @@ else:
 	plt.title('Wavefunction and Probability Density', fontsize=30)
 	str3=r"$n = "+str(n)+r"$"
 	ax.text(1.1*L,np.sqrt(4.0/L), r"$n = "+str(n)+r"$", fontsize=25, color="black")
-	plt.legend(bbox_to_anchor=(0.73, 0.95), loc=2, borderaxespad=0.)
+	lgd = plt.legend(bbox_to_anchor=(0.73, 0.95), loc=2, borderaxespad=0.)
 
 	# Show the plots on the screen once the code reaches this point
 	buf = io.BytesIO()
-	plt.savefig(buf, format='png')
+	plt.savefig(buf, format='png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 	buf.seek(0)  # rewind the data
 	sys.stdout.flush()
 	sys.stdout.buffer.write(buf.getvalue())

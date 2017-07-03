@@ -26,8 +26,6 @@ else:
 	mmax2 = int(form["m"].value)
 	L2 = float(form["Ly"].value)
 
-	# Defining the wavefunction
-	def psi2D(x,y): return 2.0*np.sin(n*np.pi*x)*np.sin(m*np.pi*y)
 	# Defining the energy as a function
 	def En2D(n,m,L1,L2): return 37.60597*((float(n)/L1)**2+ (float(m)/L2)**2)
 
@@ -44,16 +42,16 @@ else:
 	ax.axis([0.0,3*nmax1,0.0,val])
 	ax.set_ylabel(r'$E_n$ (eV)')
 	for n in range(1,nmax1+1):
-		for m in range(1, mmax2+1):
-			str1="$"+str(n)+r","+str(m)+r"$"
-			str2=" $E = %.3f$ eV"%(En2D(n,m,L1,L2))
-			ax.text(n*2-1.8, En2D(n,m,L1,L2)+ 0.005*val, str1, fontsize=16, color="blue")
-			ax.hlines(En2D(n,m,L1,L2), n*2-2, n*2-1, linewidth=3.8, color="red")
-			ax.hlines(En2D(n,m,L1,L2), 0.0, nmax1*2+1, linewidth=1., linestyle='--', color="black")
-			ax.text(nmax1*2+1, En2D(n,m,L1,L2)+ 0.005*val, str2, fontsize=16, color="blue")
+	    for m in range(1, mmax2+1):
+	        str1="$"+str(n)+r","+str(m)+r"$"
+	        str2=" $E = %.3f$ eV"%(En2D(n,m,L1,L2))
+	        ax.text(n*2-1.8, En2D(n,m,L1,L2)+ 0.005*val, str1, fontsize=20, color="blue")
+	        ax.hlines(En2D(n,m,L1,L2), n*2-2, n*2-1, linewidth=3.8, color="red")
+	        ax.hlines(En2D(n,m,L1,L2), 0.0, nmax1*2+1, linewidth=1., linestyle='--', color="black")
+	        ax.text(nmax1*2+1, En2D(n,m,L1,L2)+ 0.005*val, str2, fontsize=16, color="blue")
 	plt.title("Energy Levels for \n ", fontsize=30)
 	str1=r"$L_x = "+str(L1)+r"$ A, $n_{max} = "+str(nmax1)+r"$     $L_y = "+str(L2)+r"$ A,  $m_{max}="+str(mmax2)+r"$"
-	ax.text(1.5,val, str1, fontsize=25, color="black")
+	ax.text(0.1,val, str1, fontsize=25, color="black")
 
 	# Show the plots on the screen once the code reaches this point
 	buf = io.BytesIO()

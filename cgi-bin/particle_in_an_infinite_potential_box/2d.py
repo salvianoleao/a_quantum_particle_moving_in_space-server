@@ -16,20 +16,17 @@ if "n" not in form or "m" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
-	print("Please fill in the name and addr fields.")
+	print("Please fill in the required fields.")
 else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
-
-	# Defining the wavefunction
-	def psi(x,n,L): return np.sqrt(2.0/L)*np.sin(float(n)*np.pi*x/L)
 
 	n = int(form["n"].value)
 	m = int(form["m"].value)
 
 	# Defining the wavefunction
 	def psi2D(x,y): return 2.0*np.sin(n*np.pi*x)*np.sin(m*np.pi*y)
-	
+
 	# Generating the wavefunction graph
 	x = np.linspace(0, 1, 100)
 	y = np.linspace(0, 1, 100)

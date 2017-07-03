@@ -12,11 +12,11 @@ import matplotlib.pylab as plt # matplotlib library for plotting and visualizati
 import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
 
 form = cgi.FieldStorage()
-if "n" not in form or "L" not in form:
+if False:#"n" not in form or "L" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
-	print("Please fill in the name and addr fields.")
+	print("Please fill in the required fields.")
 else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
@@ -24,8 +24,8 @@ else:
 	# Defining the wavefunction
 	def psi(x,n,L): return np.sqrt(2.0/L)*np.sin(float(n)*np.pi*x/L)
 
-	n = int(form["n"].value)
-	L = float(form["L"].value)
+	n = 1#int(form["n"].value)
+	L = 8#float(form["L"].value)
 
 	# Generating the wavefunction graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
@@ -37,13 +37,15 @@ else:
 	ax.plot(x, psi(x,n,L), linestyle='--', label=str1, color="orange", linewidth=2.8) # Plotting the wavefunction
 	ax.hlines(0.0, 0.0, L, linewidth=1.8, linestyle='--', color="black") # Adding a horizontal line at 0
 	# Now we define labels, legend, etc
+	ax.legend(loc=2);
 	ax.set_xlabel(r'$L$')
 	ax.set_ylabel(r'$\psi_n(x)$')
 	plt.title('Wavefunction')
+	lgd = plt.legend(bbox_to_anchor=(1.1, 1), loc=2, borderaxespad=0.0)
 
 	# Show the plots on the screen once the code reaches this point
 	buf = io.BytesIO()
-	plt.savefig(buf, format='png')
+	plt.savefig(buf, format='png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 	buf.seek(0)  # rewind the data
 	sys.stdout.flush()
 	sys.stdout.buffer.write(buf.getvalue())
