@@ -12,7 +12,7 @@ import matplotlib.pylab as plt # matplotlib library for plotting and visualizati
 import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
 
 form = cgi.FieldStorage()
-if "a" not in form or "Vo" not in form or "V1" not in form or "d" not in form:
+if "L" not in form or "Vo" not in form or "V1" not in form or "d" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
@@ -23,16 +23,17 @@ else:
 
 	# Reading the input variables from the user
 	Vo = abs(float(form["Vo"].value))
-	a =  abs(float(form["a"].value))
+	L =  abs(float(form["L"].value))
 	V1 = abs(float(form["V1"].value))
 	d =  abs(float(form["d"].value))
 
-	val = np.sqrt(2.0*9.10938356e-31*1.60217662e-19)*1e-10/(1.05457180013e-34) # equal to sqrt(2m*1eV)*1A/hbar
+	val = np.sqrt(2.0*9.10938356e-31*1.60217662e-19)*1e-10/(1.05457180013e-34)
+	# equal to sqrt(2m_e (kg)* (Joules/eV)* 1 (m/A)/hbar (in J.sec)
 
 	# Defining functions that come from the energy expression
 	def f0(E):
-	    var = -np.sqrt(Vo-E)+np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+a))
-	    var = var/(np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+a)))
+	    var = -np.sqrt(Vo-E)+np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+L))
+	    var = var/(np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+L)))
 	    return var
 
 	def f1(E):
@@ -41,8 +42,8 @@ else:
 	    return var
 
 	def f2(E):
-	    var = np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+a))
-	    var = var/(np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+a))-np.sqrt(Vo-E))
+	    var = np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+L))
+	    var = var/(np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+L))-np.sqrt(Vo-E))
 	    return var
 
 	def f3(E):
@@ -61,7 +62,7 @@ else:
 	E_vals = np.zeros(999)
 	n = 1
 	# Here we loop from E = 0 to E = Vo seeking roots
-	for E in np.linspace(0.0, Vo, 20000):
+	for E in np.linspace(0.0, Vo, 200000):
 	    f_even_now = f_even(E)
 	    # If the difference is zero or if it changes sign then we might have passed through a root
 	    if (f_even_now == 0.0 or f_even_now/f_even_old < 0.0):
@@ -94,8 +95,8 @@ else:
 	    if (n%2==0):
 	        C = 1.0
 	        B = f3(E_vals[n-1])*C
-	        D = np.exp(a0*(a+d/2.0))*(B*np.cos(k*(a+d/2.0))+C*np.sin(k*(a+d/2.0)))
-	        tunn_prob = D*D*np.exp(-a0*(2.0*a+d))/(2.0*a0)
+	        D = np.exp(a0*(L+d/2.0))*(B*np.cos(k*(L+d/2.0))+C*np.sin(k*(L+d/2.0)))
+	        tunn_prob = D*D*np.exp(-a0*(2.0*L+d))/(2.0*a0)
 	        total_prob = tunn_prob
 	        if (d>0.0):
 	            A = (B*np.cos(k*d/2.0)+C*np.sin(k*d/2.0))/(-np.exp(-a1*d/2.0)+np.exp(a1*d/2.0))
@@ -103,16 +104,15 @@ else:
 	            total_prob += barr_prob
 	        else:
 	            barr_prob = 0.0
-	        total_prob += (B*B*(np.sin(k*(2.0*a+d))+2.0*a*k-np.sin(k*d))+2.0*B*C*(np.cos(k*d)-np.cos(k*(2.0*a+d)))+C*C*(-np.sin(k*(2.0*a+d))+2.0*a*k+np.sin(k*d)))/(4.0*k)
-	        print ("  State #%3d  (Odd): tunneling probability = %5.2f%%, barrier probability = %5.2f%%" % (n,100*tunn_prob/total_prob,100*barr_prob/total_prob))
+	        total_prob += (B*B*(np.sin(k*(2.0*L+d))+2.0*L*k-np.sin(k*d))+2.0*B*C*(np.cos(k*d)-np.cos(k*(2.0*L+d)))+C*C*(-np.sin(k*(2.0*L+d))+2.0*L*k+np.sin(k*d)))/(4.0*k)
 	    # Even wavefunction
 	    else:
 	        B = 1.0
 	        C = f1(E_vals[n-1])*B
 	        A = (B*np.cos(k*d/2.0)+C*np.sin(k*d/2.0))/(np.exp(-a1*d/2.0)+np.exp(a1*d/2.0))
-	        D = np.exp(a0*(a+d/2.0))*(B*np.cos(k*(a+d/2.0))+C*np.sin(k*(a+d/2.0)))
+	        D = np.exp(a0*(L+d/2.0))*(B*np.cos(k*(L+d/2.0))+C*np.sin(k*(L+d/2.0)))
 	        barr_prob = A*A*(np.sinh(a1*d)/a1+d)
-	        tunn_prob = D*D*np.exp(-a0*(2.0*a+d))/(2.0*a0)
+	        tunn_prob = D*D*np.exp(-a0*(2.0*L+d))/(2.0*a0)
 	        total_prob = barr_prob + tunn_prob
-	        total_prob += (B*B*(np.sin(k*(2.0*a+d))+2.0*a*k-np.sin(k*d))+2.0*B*C*(np.cos(k*d)-np.cos(k*(2.0*a+d)))+C*C*(-np.sin(k*(2.0*a+d))+2.0*a*k+np.sin(k*d)))/(4.0*k)
-	        print ("  State #%3d (Even): tunneling probability = %5.2f%%, barrier probability = %5.2f%%" % (n,100*tunn_prob/total_prob,100*barr_prob/total_prob))
+	        total_prob += (B*B*(np.sin(k*(2.0*L+d))+2.0*L*k-np.sin(k*d))+2.0*B*C*(np.cos(k*d)-np.cos(k*(2.0*L+d)))+C*C*(-np.sin(k*(2.0*L+d))+2.0*L*k+np.sin(k*d)))/(4.0*k)
+	    print ("  State  n=%3d   tunneling probability = %5.2f%%, barrier probability = %5.2f%%" % (n,100*tunn_prob/total_prob,100*barr_prob/total_prob))

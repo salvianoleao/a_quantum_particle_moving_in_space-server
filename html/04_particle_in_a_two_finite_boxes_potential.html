@@ -13332,20 +13332,27 @@ Here are some question to think about:</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The allowed bounded energies are:
-  State #  1 (Even wavefunction):    0.2697 eV,   4.32173e-20 J
-  State #  2  (Odd wavefunction):    0.3040 eV,   4.87032e-20 J
-  State #  3 (Even wavefunction):    1.0769 eV,   1.72533e-19 J
-  State #  4  (Odd wavefunction):    1.2126 eV,   1.94284e-19 J
-  State #  5 (Even wavefunction):    2.4145 eV,   3.86847e-19 J
-  State #  6  (Odd wavefunction):    2.7144 eV,   4.34887e-19 J
-  State #  7 (Even wavefunction):    4.2662 eV,   6.83521e-19 J
-  State #  8  (Odd wavefunction):    4.7797 eV,    7.6579e-19 J
-  State #  9 (Even wavefunction):    6.5771 eV,   1.05376e-18 J
-  State # 10  (Odd wavefunction):    7.2976 eV,   1.16921e-18 J
-
-THERE ARE  10 POSSIBLE BOUNDED ENERGIES
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p4Vo2" value="8">
+Enter the value for L (box size, in Angstroms) = <input type="text" id="p4L2" value="10">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V12" value="8">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d2" value="1">
+<script language="javascript">function btnp42() {
+    Vo = $("#p4Vo2")[0].value
+    L = $("#p4L2")[0].value
+    V1 = $("#p4V12")[0].value
+    d = $("#p4d2")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        src = "cgi-bin/particle_in_a_two_finite_boxes_potential/allowedbe.py?Vo=" + Vo + "&L=" + L + "&V1=" + V1 + "&d=" + d
+        $.get(src,function(data){
+            $("#text42")[0].innerHTML = data
+        })
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp42();">Show</button>
 </pre>
+<pre id="text42"></pre>
 </div>
 </div>
 
@@ -13418,7 +13425,25 @@ THERE ARE  10 POSSIBLE BOUNDED ENERGIES
 
 
 <div class="output_png output_subarea ">
-<img src="">
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p4Vo3" value="8">
+Enter the value for L (box size, in Angstroms) = <input type="text" id="p4L3" value="10">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V13" value="8">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d3" value="1">
+<script language="javascript">function btnp43() {
+    Vo = $("#p4Vo3")[0].value
+    L = $("#p4L3")[0].value
+    V1 = $("#p4V13")[0].value
+    d = $("#p4d3")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        src = "cgi-bin/particle_in_a_two_finite_boxes_potential/el.py?Vo=" + Vo + "&L=" + L + "&V1=" + V1 + "&d=" + d
+        $("#mypng43")[0].src = src
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp43();">Show</button>
+</pre>
+<img id="mypng43" src="">
 </div>
 
 </div>
@@ -13592,7 +13617,22 @@ THERE ARE  10 POSSIBLE BOUNDED ENERGIES
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p4Vo4" value="8">
+Enter the value for L (box size, in Angstroms) = <input type="text" id="p4L4" value="10">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V14" value="8">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d4" value="1">
+<script language="javascript">function btnp44() {
+    Vo = $("#p4Vo4")[0].value
+    L = $("#p4L4")[0].value
+    V1 = $("#p4V14")[0].value
+    d = $("#p4d4")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        $("#mypng44")[0].src = "cgi-bin/particle_in_a_two_finite_boxes_potential/oddevenwf.py?Vo=" + Vo + "&L=" + L + "&V1=" + V1 + "&d=" + d
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp44();">Show</button>
 The Wavefunctions are:
 </pre>
 </div>
@@ -13606,7 +13646,7 @@ The Wavefunctions are:
 
 
 <div class="output_png output_subarea ">
-<img src="">
+<img id="mypng44" src="">
 </div>
 
 </div>
@@ -13786,7 +13826,22 @@ The Wavefunctions are:
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p4Vo5" value="8">
+Enter the value for L (box size, in Angstroms) = <input type="text" id="p4L5" value="10">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V15" value="8">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d5" value="1">
+<script language="javascript">function btnp45() {
+    Vo = $("#p4Vo5")[0].value
+    L = $("#p4L5")[0].value
+    V1 = $("#p4V15")[0].value
+    d = $("#p4d5")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        $("#mypng45")[0].src = "cgi-bin/particle_in_a_two_finite_boxes_potential/oddevenp.py?Vo=" + Vo + "&L=" + L + "&V1=" + V1 + "&d=" + d
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp45();">Show</button>
 The Probability Densities are:
 </pre>
 </div>
@@ -13800,7 +13855,7 @@ The Probability Densities are:
 
 
 <div class="output_png output_subarea ">
-<img src="">
+<img id="mypng45" src="">
 </div>
 
 </div>
@@ -13882,19 +13937,27 @@ $$ \frac{\int_{-\frac{d}{2}}^{\frac{d}{2}} |\psi(x)|^2\ dx}{\int_{-\infty}^{+\in
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-The tunneling probabilities and probabilities of being inside the barrier are:
-  State  n=  1   tunneling probability =  0.20%, barrier probability =  0.54%
-  State  n=  2   tunneling probability =  0.24%, barrier probability =  0.04%
-  State  n=  3   tunneling probability =  0.84%, barrier probability =  2.00%
-  State  n=  4   tunneling probability =  1.02%, barrier probability =  0.16%
-  State  n=  5   tunneling probability =  2.09%, barrier probability =  4.00%
-  State  n=  6   tunneling probability =  2.55%, barrier probability =  0.36%
-  State  n=  7   tunneling probability =  4.46%, barrier probability =  6.00%
-  State  n=  8   tunneling probability =  5.64%, barrier probability =  0.61%
-  State  n=  9   tunneling probability = 10.62%, barrier probability =  7.29%
-  State  n= 10   tunneling probability = 16.64%, barrier probability =  0.82%
+<pre>Enter the value for Vo (in eV) = <input type="text" id="p4Vo6" value="8">
+Enter the value for L (box size, in Angstroms) = <input type="text" id="p4L6" value="10">
+Enter the value for V1 (V1 &gt;= Vo, in eV) = <input type="text" id="p4V16" value="8">
+Enter the value for d (barrier size, in Angstroms) = <input type="text" id="p4d6" value="1">
+<script language="javascript">function btnp46() {
+    Vo = $("#p4Vo6")[0].value
+    L = $("#p4L6")[0].value
+    V1 = $("#p4V16")[0].value
+    d = $("#p4d6")[0].value
+    if(parseFloat(V1) >= parseFloat(Vo)) {
+        src = "cgi-bin/particle_in_a_two_finite_boxes_potential/tunnelingp.py?Vo=" + Vo + "&L=" + L + "&V1=" + V1 + "&d=" + d
+        $.get(src,function(data){
+            $("#text46")[0].innerHTML = data
+        })
+    } else {
+        alert("V1 cannot be smaller than Vo.")
+    }
+}</script>
+<button type="button" onclick="btnp46();">Show</button>
 </pre>
+<pre id="text46"></pre>
 </div>
 </div>
 
