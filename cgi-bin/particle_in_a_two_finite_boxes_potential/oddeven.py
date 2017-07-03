@@ -23,16 +23,17 @@ else:
 
 	# Reading the input variables from the user
 	Vo = abs(float(form["Vo"].value))
-	a =  abs(float(form["a"].value))
+	L =  abs(float(form["L"].value))
 	V1 = abs(float(form["V1"].value))
 	d =  abs(float(form["d"].value))
 
-	val = np.sqrt(2.0*9.10938356e-31*1.60217662e-19)*1e-10/(1.05457180013e-34) # equal to sqrt(2m*1eV)*1A/hbar
+	val = np.sqrt(2.0*9.10938356e-31*1.60217662e-19)*1e-10/(1.05457180013e-34)
+	# equal to sqrt(2m_e (kg)* (Joules/eV)* 1 (m/A)/hbar (in J.sec)
 
 	# Defining functions that come from the energy expression
 	def f0(E):
-	    var = -np.sqrt(Vo-E)+np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+a))
-	    var = var/(np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+a)))
+	    var = -np.sqrt(Vo-E)+np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+L))
+	    var = var/(np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+L)))
 	    return var
 
 	def f1(E):
@@ -41,8 +42,8 @@ else:
 	    return var
 
 	def f2(E):
-	    var = np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+a))
-	    var = var/(np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+a))-np.sqrt(Vo-E))
+	    var = np.sqrt(E)+np.sqrt(Vo-E)*np.tan(np.sqrt(E)*val*(d/2.0+L))
+	    var = var/(np.sqrt(E)*np.tan(np.sqrt(E)*val*(d/2.0+L))-np.sqrt(Vo-E))
 	    return var
 
 	def f3(E):
@@ -50,29 +51,45 @@ else:
 	    var = var/(np.sqrt(V1-E)+np.sqrt(E)*np.tanh(d*np.sqrt(V1-E)*val/2.0)*np.tan(d*np.sqrt(E)*val/2.0))
 	    return var
 
+	# Defining maximum values to be displayed on the y axes
+	maxval = 0.0
+	for n in range(10):
+	    if (abs(f1(n*Vo/10.0))>maxval and abs(f1(n*Vo/10.0))!=float('inf')): maxval = abs(f1(n*Vo/10.0))
+	if (np.sqrt(Vo)*1.9>maxval):
+	    ymax1 = 1.9*np.sqrt(Vo)
+	else:
+	    ymax1 = maxval
+	maxval = 0.0
+	for n in range(10):
+	    if (abs(f3(n*Vo/10.0))>maxval and abs(f3(n*Vo/10.0))!=float('inf')): maxval = abs(f3(n*Vo/10.0))
+	if (np.sqrt(Vo)*1.9>maxval):
+	    ymax2 = 1.9*np.sqrt(Vo)
+	else:
+	    ymax2 = maxval
+
 	# Generating the wavefunction graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
 	fig, axes = plt.subplots(1, 2, figsize=(13,4))
-	axes[0].axis([0.0,Vo,-np.sqrt(Vo)*1.9,np.sqrt(Vo)*1.9])
+	axes[0].axis([0.0,Vo,-ymax1,ymax1])
 	axes[0].set_xlabel(r'$E$ (eV)')
 	axes[0].set_ylabel(r'')
-	axes[0].set_title('Even solution')
-	axes[1].axis([0.0,Vo,-np.sqrt(Vo)*1.9,np.sqrt(Vo)*1.9])
+	axes[0].set_title('Even solutions')
+	axes[1].axis([0.0,Vo,-ymax2,ymax2])
 	axes[1].set_xlabel(r'$E$ (eV)')
 	axes[1].set_ylabel(r'')
-	axes[1].set_title('Odd solution')
-	E_even = np.linspace(0.0, Vo, 10000)
-	E_odd = np.linspace(0.0, Vo, 10000)
+	axes[1].set_title('Odd solutions')
+	E_even = np.linspace(0.0, Vo, 100000)
+	E_odd = np.linspace(0.0, Vo, 100000)
 	# Removing discontinuity points
-	for n in range(10000):
-	    if abs(np.sqrt(E_even[n])+np.sqrt(Vo-E_even[n])*np.tan(np.sqrt(E_even[n])*val*(d/2.0+a)))<0.1: E_even[n] = np.nan
-	    if abs(np.sqrt(E_even[n])-np.sqrt(V1-E_even[n])*np.tanh(d*np.sqrt(V1-E_even[n])*val/2.0)*np.tan(d*np.sqrt(E_even[n])*val/2.0))<0.1: E_even[n] = np.nan
-	    if abs(np.sqrt(E_odd[n])*np.tan(np.sqrt(E_odd[n])*val*(d/2.0+a))-np.sqrt(Vo-E_odd[n]))<0.1: E_odd[n] = np.nan
-	    if abs(np.sqrt(V1-E_odd[n])+np.sqrt(E_odd[n])*np.tanh(d*np.sqrt(V1-E_odd[n])*val/2.0)*np.tan(d*np.sqrt(E_odd[n])*val/2.0))<0.1: E_odd[n] = np.nan
+	for n in range(100000):
+	    if abs(np.sqrt(E_even[n])+np.sqrt(Vo-E_even[n])*np.tan(np.sqrt(E_even[n])*val*(d/2.0+L)))<0.01: E_even[n] = np.nan
+	    if abs(np.sqrt(E_even[n])-np.sqrt(V1-E_even[n])*np.tanh(d*np.sqrt(V1-E_even[n])*val/2.0)*np.tan(d*np.sqrt(E_even[n])*val/2.0))<0.01: E_even[n] = np.nan
+	    if abs(np.sqrt(E_odd[n])*np.tan(np.sqrt(E_odd[n])*val*(d/2.0+L))-np.sqrt(Vo-E_odd[n]))<0.01: E_odd[n] = np.nan
+	    if abs(np.sqrt(V1-E_odd[n])+np.sqrt(E_odd[n])*np.tanh(d*np.sqrt(V1-E_odd[n])*val/2.0)*np.tan(d*np.sqrt(E_odd[n])*val/2.0))<0.01: E_odd[n] = np.nan
 	# Plotting the curves and setting the labelsaxes[0].plot(E_even, f0(E_even), label=r"$\frac{-\alpha_o+k\tan\left[k\left(\frac{d}{2}+a\right)\right]}{k+\alpha_o\tan\left[k\left(\frac{d}{2}+a\right)\right]}$", color="blue")
-	axes[0].plot(E_even, f0(E_even), label=r"$\frac{-\alpha_o+k\tan\left[k\left(\frac{d}{2}+a\right)\right]}{k+\alpha_o\tan\left[k\left(\frac{d}{2}+a\right)\right]}$", color="blue")
+	axes[0].plot(E_even, f0(E_even), label=r"$\frac{-\alpha_o+k\tan\left[k\left(\frac{d}{2}+L\right)\right]}{k+\alpha_o\tan\left[k\left(\frac{d}{2}+L\right)\right]}$", color="blue")
 	axes[0].plot(E_even, f1(E_even), label=r"$\frac{\alpha_1\tanh\left(\alpha_1\frac{d}{2}\right)+k\tan\left(k\frac{d}{2}\right)}{k-\alpha_1\tanh\left(\alpha_1\frac{d}{2}\right)\tan\left(k\frac{d}{2}\right)}$", color="red")
-	axes[1].plot(E_odd,  f2(E_odd),  label=r"$\frac{k+\alpha_o\tan\left[k\left(\frac{d}{2}+a\right)\right]}{-\alpha_o+k\tan\left[k\left(\frac{d}{2}+a\right)\right]}$", color="blue")
+	axes[1].plot(E_odd,  f2(E_odd),  label=r"$\frac{k+\alpha_o\tan\left[k\left(\frac{d}{2}+L\right)\right]}{-\alpha_o+k\tan\left[k\left(\frac{d}{2}+L\right)\right]}$", color="blue")
 	axes[1].plot(E_odd,  f3(E_odd),  label=r"$\frac{k\tanh\left(\alpha_1\frac{d}{2}\right)-\alpha_1\tan\left(k\frac{d}{2}\right)}{\alpha_1+k\tanh\left(\alpha_1\frac{d}{2}\right)\tan\left(k\frac{d}{2}\right)}$", color="red")
 	# Chosing the positions of the legends
 	lgd1 = axes[0].legend(bbox_to_anchor=(0.05, -0.2), loc=2, borderaxespad=0.0)
