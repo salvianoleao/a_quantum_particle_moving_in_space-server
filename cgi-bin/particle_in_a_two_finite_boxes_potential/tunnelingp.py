@@ -16,7 +16,7 @@ if "L" not in form or "Vo" not in form or "V1" not in form or "d" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
-	print("Please fill in the name and addr fields.")
+	print("Please fill in the required fields.")
 else:
 	print("Content-Type: text/plain")    # HTML is following
 	print()                             # blank line, end of headers
