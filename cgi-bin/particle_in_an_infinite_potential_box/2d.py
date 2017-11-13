@@ -33,7 +33,7 @@ else:
 	X, Y = np.meshgrid(x, y)
 	fig, axes = plt.subplots(1, 1, figsize=(8,8))
 	axes.imshow(psi2D(X,Y), origin='lower', extent=[0.0, 1.0, 0.0, 1.0])
-	axes.set_title(r'Heat plot of $\Psi_{n,m}(x,y)$ for $n='+str(n)+r'$ and $m='+str(m)+r'$')
+	axes.set_title(r'Heat plot of $\sqrt{L_xL_y}\Psi_{n,m}(x,y)$ for $n='+str(n)+r'$ and $m='+str(m)+r'$')
 	axes.set_ylabel(r'$y/L_y$')
 	axes.set_xlabel(r'$x/L_x$')
 

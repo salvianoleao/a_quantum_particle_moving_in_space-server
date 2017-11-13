@@ -12,7 +12,7 @@ import matplotlib.pylab as plt # matplotlib library for plotting and visualizati
 import numpy as np #numpy library for numerical manipulation, especially suited for data arrays
 
 form = cgi.FieldStorage()
-if "n" not in form or "L" not in form:
+if "n" not in form or "m" not in form or "yo" not in form or "xo" not in form:
 	print("Content-Type: text/html")    # HTML is following
 	print()                             # blank line, end of headers
 	print("<H1>Error</H1>")
@@ -21,26 +21,27 @@ else:
 	print("Content-Type: image/png")    # HTML is following
 	print()                             # blank line, end of headers
 
-	# Defining the wavefunction
-	def psi(x,n,L): return np.sqrt(2.0/L)*np.sin(float(n)*np.pi*x/L)
-
+	# Here the users inputs the values of n and m
 	n = int(form["n"].value)
-	L = float(form["L"].value)
+	m = int(form["m"].value)
+	yo = float(form["yo"].value)
+	xo = float(form["xo"].value)
+
+	def psi2D(x,y): return 2.0*np.sin(n*np.pi*x)*np.sin(m*np.pi*y)
 
 	# Generating the wavefunction graph
 	plt.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
-	x = np.linspace(0, L, 900)
+	y = np.linspace(0, 1.0, 900)
 	fig, ax = plt.subplots()
-	lim1=np.sqrt(2.0/L) # Maximum value of the wavefunction
-	ax.axis([0.0,L,-1.1*lim1,1.1*lim1]) # Defining the limits to be plot in the graph
-	str1=r"$n = "+str(n)+r"$"
-	ax.plot(x, psi(x,n,L), linestyle='--', label=str1, color="orange", linewidth=2.8) # Plotting the wavefunction
-	ax.hlines(0.0, 0.0, L, linewidth=1.8, linestyle='--', color="black") # Adding a horizontal line at 0
+	lim1=2.0 # Maximum value of the wavefunction
+	ax.axis([0.0,1.0,-1.1*lim1,1.1*lim1]) # Defining the limits to be plot in the graph
+	str1=r"$n = "+str(n)+r", m = "+str(m)+r", x_o = "+str(xo)+r"\times L_x$"
+	ax.plot(y, psi2D(xo,y), linestyle='--', label=str1, color="blue", linewidth=2.8) # Plotting the wavefunction
+	ax.hlines(0.0, 0.0, 1.0, linewidth=1.8, linestyle='--', color="black") # Adding a horizontal line at 0
 	# Now we define labels, legend, etc
 	ax.legend(loc=2);
-	ax.set_xlabel(r'$L$')
-	ax.set_ylabel(r'$\psi_n(x)$')
-	plt.title('Wavefunction')
+	ax.set_xlabel(r'$y/L_y$')
+	ax.set_ylabel(r'$\sqrt{L_xL_y}\Psi_{n,m}(x_o,y)$')
 	lgd = plt.legend(bbox_to_anchor=(1.1, 1), loc=2, borderaxespad=0.0)
 
 	# Show the plots on the screen once the code reaches this point

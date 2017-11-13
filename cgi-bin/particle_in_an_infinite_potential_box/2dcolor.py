@@ -27,7 +27,7 @@ else:
 	# Plotting the colorbar for the density plots
 	fig = plt.figure(figsize=(10,3))
 	colbar = fig.add_axes([0.05, 0.80, 0.7, 0.10])
-	norm = mpl.colors.Normalize(vmin=0., vmax=2.0)
+	norm = mpl.colors.Normalize(vmin=-2.0, vmax=2.0)
 	mpl.colorbar.ColorbarBase(colbar, norm=norm, orientation='horizontal')
 
 	# Show the plots on the screen once the code reaches this point
